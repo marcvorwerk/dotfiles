@@ -5,6 +5,9 @@
 
 - clean: ['~']
 
+- shell:
+  - [git submodule update --recursive --init, Installing submodules]
+
 - create:
     - ~/.config/cheat/cheatsheets
 
@@ -56,9 +59,7 @@
   - git
   - tilix
 
-#- shell:
-#  - [git submodule update --recursive --init, Installing submodules]
-
 # ToDo:
 # - s3cfg and awscfg without secrets
+# - ~/.gitconfig
 # - Install fx: https://github.com/antonmedv/fx
