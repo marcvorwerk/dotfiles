@@ -1,0 +1,64 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- create:
+    - ~/.config/cheat/cheatsheets
+
+- shell:
+    - description: Install Cheat
+      command: scripts/install_cheat.sh --version 4.4.0
+      stdin: false
+      stdout: true
+      stderr: true
+
+- link:
+    ~/.zshrc: zsh/zshrc
+    ~/.env.zsh: zsh/env.zsh
+    ~/.aliases.zsh: zsh/aliases.zsh
+    ~/.functions.zsh: zsh/functions.zsh
+    ~/.p10k.zsh: zsh/p10k.zsh
+    ~/.fzf.zsh: autocompetions/fzf.zsh
+    ~/.config/cheat/conf.yml: confs/cheat.yml
+    ~/.config/cheat/cheat.zsh: autocompetions/cheat.zsh
+    # ~/.config/cheat/cheat.zsh:
+    ~/.config/cheat/cheatsheets/personal/: cheats/
+    ~/.profile: confs/profile
+
+- git: 
+    ~/.oh-my-zsh:
+        url: git@github.com:ohmyzsh/ohmyzsh.git
+        branch: master
+        method: clone-or-pull
+    ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting:
+        url: git@github.com:zsh-users/zsh-syntax-highlighting.git
+        branch: master
+        method: clone-or-pull
+    ~/.oh-my-zsh/custom/themes/powerlevel10k:
+        url: git@github.com:romkatv/powerlevel10k.git
+        branch: master
+        method: clone-or-pull
+
+- apt:
+  - jq
+  - yq
+  - zsh
+  - htop
+  - bind9-dnsutils
+  - fzf
+  - iperf3
+  - ipcalc
+  - nmap
+  - neovim
+  - git
+  - tilix
+
+#- shell:
+#  - [git submodule update --recursive --init, Installing submodules]
+
+# ToDo:
+# - s3cfg and awscfg without secrets
+# - Install fx: https://github.com/antonmedv/fx

@@ -1,0 +1,10 @@
+[submodule "dotbot"]
+	path = dotbot
+	url = git@github.com:anishathalye/dotbot.git
+	ignore = dirty
+[submodule "plugins/dotbot-git"]
+	path = plugins/dotbot-git
+	url = git@github.com:DrDynamic/dotbot-git.git
+[submodule "plugins/dotbot-apt"]
+	path = plugins/dotbot-apt
+	url = git@github.com:marcvorwerk/dotbot-apt.git
