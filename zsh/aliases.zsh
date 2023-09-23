@@ -37,7 +37,6 @@ alias chgrp='chgrp --preserve-root'
 ############
 
 alias mkdir="mkdir -v "
-alias mount='mount |column -t'
 alias ll="ls --color=auto -lahv"
 alias bc="bc -l"
 alias tree='tree -a -I .git'

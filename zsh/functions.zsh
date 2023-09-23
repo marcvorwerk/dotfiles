@@ -121,6 +121,14 @@ function wat() {
 }
 compdef wat=which
 
+function better_mount() {
+    if [ $# -eq 0 ]; then
+        mount | column -t
+    else
+        command mount "$@"
+    fi
+}
+alias mount="better_mount"
 
 ###########
 ### GIT ###
