@@ -63,3 +63,5 @@
 # - s3cfg and awscfg without secrets
 # - ~/.gitconfig
 # - Install fx: https://github.com/antonmedv/fx
+# - iotop & iotop-c
+# - Resticprofile
