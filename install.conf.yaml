@@ -51,6 +51,7 @@
   - zsh
   - htop
   - bind9-dnsutils
+  - fd-find
   - fzf
   - iperf3
   - ipcalc
