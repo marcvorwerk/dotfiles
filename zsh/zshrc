@@ -38,5 +38,3 @@ source $HOME/.config/cheat/cheat.zsh
 
 ### Function path -> maybe?
 # fpath+=("${HOME}/.zsh_functions")
-
-alias abcdef="echo foo"
