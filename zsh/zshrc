@@ -38,3 +38,5 @@ source $HOME/.config/cheat/cheat.zsh
 
 ### Function path -> maybe?
 # fpath+=("${HOME}/.zsh_functions")
+
+setopt glob_dots # Do not require a leading ‘.’ in a filename to be matched explicitly.
