@@ -30,6 +30,7 @@
     # ~/.config/cheat/cheat.zsh:
     ~/.config/cheat/cheatsheets/personal/: cheats/
     ~/.profile: confs/profile
+    ~/.config/nvim.vscode: vscode/nvim.vscode
 
 - git: 
     ~/.oh-my-zsh:
