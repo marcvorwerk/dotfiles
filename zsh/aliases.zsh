@@ -40,6 +40,7 @@ alias mkdir="mkdir -v "
 alias ll="ls --color=auto -lahv"
 alias bc="bc -l"
 alias tree='tree -a -I .git'
+alias cd-git-root="cd $(git rev-parse --show-toplevel)"
 alias history="history -E"
 
 alias path='echo -e ${PATH//:/\\n}'
