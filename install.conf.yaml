@@ -45,6 +45,10 @@
         url: git@github.com:romkatv/powerlevel10k.git
         branch: master
         method: clone-or-pull
+    ~/.pyenv:
+        url: git@github.com:pyenv/pyenv.git
+        branch: master
+        method: clone-or-pull
 
 - apt:
   - jq

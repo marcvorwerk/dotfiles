@@ -31,6 +31,11 @@ path+=(
 
 eval $(thefuck --alias)
 
+# PYENV
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 source $HOME/.env.zsh
 source $HOME/.aliases.zsh
 source $HOME/.functions.zsh
