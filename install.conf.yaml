@@ -49,6 +49,18 @@
         url: git@github.com:pyenv/pyenv.git
         branch: master
         method: clone-or-pull
+    ~/.pyenv/plugins/pyenv-virtualenv:
+        url: git@github.com:pyenv/pyenv-virtualenv.git
+        branch: master
+        method: clone-or-pull
+    ~/.pyenv/plugins/pyenv-update:
+        url: git@github.com:pyenv/pyenv-update.git
+        branch: master
+        method: clone-or-pull
+    ~/.pyenv/plugins/pyenv-doctor:
+        url: git@github.com:pyenv/pyenv-doctor.git
+        branch: master
+        method: clone-or-pull
 
 - apt:
   - jq
