@@ -31,6 +31,7 @@
     # ~/.config/cheat/cheat.zsh:
     ~/.config/cheat/cheatsheets/personal/: cheats/
     ~/.profile: confs/profile
+    ~/.config/nvim/: nvim/
     ~/.config/nvim.vscode: vscode/nvim.vscode
 
 - git: 
