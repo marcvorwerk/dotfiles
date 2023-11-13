@@ -1,6 +1,7 @@
 export GPG_TTY=$TTY
 export TERMINAL=tilix
-export EDITOR=nvim
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
 export LESS='-iR'
 export SYSTEMD_PAGER='cat'
 export CHEAT_USE_FZF=true
