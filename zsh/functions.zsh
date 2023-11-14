@@ -150,3 +150,24 @@ osenv() {
     export OS_ENV=$(find $osenvfiles \! -executable -type f -printf "%f\n" | sed 's/ /\n/g'| sort | fzf)
     source $osenvfiles/$OS_ENV
 }
+
+# Create Test Instance
+openstack_create_test_instance() {
+    # Bash Style
+    # read -p "Enter Instance Name (Default: autoserver-$(date '+%d.%m.%Y_%H.%M')): " INSTANCE_NAME
+    # INSTANCE_NAME=${INSTANCE_NAME:-autotestserver_$(date '+%d.%m.%Y_%H.%M')}
+
+    # ZSH Style
+    local INSTANCE_NAME
+    vared -p "Enter Instance Name (Default [Enter]: autotestserver$(date '+%d.%m.%Y_%H.%M')): " -c INSTANCE_NAME
+    : ${INSTANCE_NAME:=autotestserver$(date '+%d.%m.%Y_%H.%M')}
+
+    local MODIFY="grep -v -e '^+-' -e '^| ID' | sed 's/^| //' | sed 's/ \+|$'//"
+    openstack server create \
+      --image $(openstack image list --status active -c ID -c Name | eval $MODIFY | fzf --prompt "Image: " --tac --no-sort --bind 'enter:execute(echo {1})+abort') \
+      --flavor $(openstack flavor list -c ID -c Name | eval $MODIFY | fzf --prompt "Flavor: " --preview-window=up --tac --no-sort --bind 'enter:execute(echo {1})+abort') \
+      --key-name $(openstack keypair list | eval $MODIFY | grep -v "Fingerprint" | fzf --prompt "Key: " --tac --no-sort --bind 'enter:execute(echo {1})+abort') \
+      --network $(openstack network list --enable --internal -c ID -c Name | eval $MODIFY | fzf --prompt "Network: " --tac --no-sort --bind 'enter:execute(echo {1})+abort') \
+      --availability-zone $(openstack availability zone list --compute | eval $MODIFY | sed 's/ \+| available$//' | grep -v "Zone Name | Zone Status" | fzf --prompt "AZ: " --tac --no-sort --bind 'enter:execute(echo {1})+abort') \
+      ${INSTANCE_NAME}
+}
