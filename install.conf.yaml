@@ -65,20 +65,21 @@
         method: clone-or-pull
 
 - apt:
-  - jq
-  - yq
-  - zsh
-  - htop
+  - bat
   - bind9-dnsutils
   - fd-find
   - fzf
-  - iperf3
-  - ipcalc
-  - nmap
-  - neovim
   - git
   - git-extras
+  - htop
+  - ipcalc
+  - iperf3
+  - jq
+  - neovim
+  - nmap
   - tilix
+  - yq
+  - zsh
 
 # ToDo:
 # - s3cfg and awscfg without secrets
