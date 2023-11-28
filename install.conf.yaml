@@ -75,6 +75,7 @@
   - ipcalc
   - iperf3
   - jq
+  - kubectl
   - neovim
   - nmap
   - tilix
