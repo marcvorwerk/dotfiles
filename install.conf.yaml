@@ -78,6 +78,7 @@
   - kubectl
   - neovim
   - nmap
+  - rpi-imager
   - tilix
   - yq
   - zsh
