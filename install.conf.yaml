@@ -65,6 +65,7 @@
         method: clone-or-pull
 
 - apt:
+  - awscli
   - bat
   - bind9-dnsutils
   - fd-find
