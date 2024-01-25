@@ -33,6 +33,7 @@
     ~/.profile: confs/profile
     ~/.config/nvim/: nvim/
     ~/.config/nvim.vscode: vscode/nvim.vscode
+    ~/.config/wezterm/: wezterm/
 
 - git: 
     ~/.oh-my-zsh:
@@ -81,6 +82,7 @@
   - nmap
   - rpi-imager
   - tilix
+  - wl-clipboard
   - yq
   - zsh
 
