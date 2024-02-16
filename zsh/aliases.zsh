@@ -37,8 +37,9 @@ alias chgrp='chgrp --preserve-root'
 ############
 
 alias mkdir="mkdir -v "
-alias ll="ls --hyperlink --color=auto -lahv"
+alias ll="ls --hyperlink=auto --color=auto -lahv"
 alias eza="eza -la --hyperlink"
+alias eza-tree="eza --tree --color=always --icons=always --git-ignore --no-quotes --hyperlink'"
 alias bc="bc -l"
 alias tree='tree -a -I .git'
 alias cd-git-root="cd \$(git rev-parse --show-toplevel)"
