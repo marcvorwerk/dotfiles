@@ -1,51 +1,62 @@
--- Pull in the wezterm API
 local wezterm = require("wezterm")
 
+require("actions")
 require("open_file_with_vim")
 
--- This table will hold the configuration.
 local config = {}
 
 local act = wezterm.action
 
--- enable scrollback bar
-config.enable_scroll_bar = false
-
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
--- set font
+config.check_for_updates = false
+config.automatically_reload_config = true
+config.quit_when_all_windows_are_closed = true
+
+config.window_padding = {
+	left = "0.5cell",
+	right = "1.1cell",
+	top = "0.8cell",
+	bottom = "0.3cell",
+}
+
+config.min_scroll_bar_height = "3cell"
+config.enable_scroll_bar = true
+config.scrollback_lines = 5000
+
 config.font = wezterm.font("Hack")
--- config.font = wezterm.font("MesloLGS NF") -- Alternative mit mehr Höhenabstand
-
 config.font_size = 12.5
-
 config.line_height = 1.0
 
--- load tokyonight_moon scheme colors
--- Colors, _ = wezterm.color.load_scheme("/home/mstinsky/.config/wezterm/tokyonight_moon.toml")
--- setup terminal color from load scheme
--- config.colors = Colors
--- config.color_scheme = "Catppuccin Frappe"
 -- config.color_scheme = "Cyberpunk"
-config.color_scheme = "Tokyo Night"
 -- config.color_scheme = "Aurora"
 
--- Use the defaults as a base
-config.hyperlink_rules = wezterm.default_hyperlink_rules()
+config.color_scheme = "Tokyo Night"
+config.colors = {
+	scrollbar_thumb = "#5e1b28",
+	split = "#444444",
+}
 
--- Iteriere über die Regeln und entferne den Mailto-Link
+config.selection_word_boundary = "\t\n{}[]()\"'´` .,;:=@"
+
+config.hyperlink_rules = wezterm.default_hyperlink_rules()
 for i, rule in ipairs(config.hyperlink_rules) do
-	if rule.format == "mailto:$0" then
+	if rule.format == "mailto$0" then
 		table.remove(config.hyperlink_rules, i)
 		break
 	end
 end
 
--- setup keybinds
+config.enable_tab_bar = true
+config.use_fancy_tab_bar = true
+config.hide_tab_bar_if_only_one_tab = true
+config.show_tabs_in_tab_bar = true
+config.show_new_tab_button_in_tab_bar = false
+
+config.window_decorations = "TITLE | RESIZE"
+
 config.keys = {
 	{
 		key = "r",
@@ -68,7 +79,7 @@ config.keys = {
 		action = act.SpawnTab("CurrentPaneDomain"),
 	},
 }
-for i = 1, 8 do
+for i = 1, 9 do
 	table.insert(config.keys, {
 		key = tostring(i),
 		mods = "CTRL",
@@ -76,9 +87,4 @@ for i = 1, 8 do
 	})
 end
 
-config.scrollback_lines = 10000
-
-config.window_decorations = "TITLE | RESIZE"
-
--- Return config
 return config
