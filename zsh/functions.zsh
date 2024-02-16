@@ -130,6 +130,30 @@ function better_mount() {
 }
 alias mount="better_mount"
 
+function preview {
+	file="$1"
+	ext=${file##*.}
+	case $ext in
+	"json")
+		jless "$file"
+		;;
+	"yml" | "yaml")  # yq ?
+		jless "$file"
+		;;
+	"pdf" | "html")
+		xdg-open "$file"
+		;;
+	"gif" | "png" | "jpg" | "jpeg" | "webp" | "tiff")
+		image_viewer=$([[ "$TERM_PROGRAM" == "WezTerm" ]] && echo "wezterm imgcat" || echo "xdg-open")
+		$image_viewer "$file"
+		;;
+	*)
+		bat "$file"
+		;;
+	esac
+}
+
+
 ###########
 ### GIT ###
 ###########
