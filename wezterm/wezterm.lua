@@ -36,7 +36,7 @@ config.line_height = 1.0
 config.color_scheme = "Tokyo Night"
 config.colors = {
 	scrollbar_thumb = "#5e1b28",
-	split = "#444444",
+	split = "#5e1b28",
 }
 
 config.selection_word_boundary = "\t\n{}[]()\"'´` .,;:=@"
