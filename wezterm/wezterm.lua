@@ -39,6 +39,11 @@ config.colors = {
 	split = "#5e1b28",
 }
 
+config.inactive_pane_hsb = {
+	saturation = 0.7,
+	brightness = 0.5,
+}
+
 config.selection_word_boundary = "\t\n{}[]()\"'´` .,;:=@"
 
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
