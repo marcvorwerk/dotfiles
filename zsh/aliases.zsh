@@ -70,3 +70,6 @@ alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 # Get top process eating cpu
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+
+# Get Zombie processes
+alias ps_zombie="ps ax -o pid,ppid,s,cmd | awk '$3 ~ /Z/'"
