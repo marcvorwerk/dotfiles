@@ -87,7 +87,9 @@
   - nmap
   - tilix
   - wl-clipboard
+  - wezterm
   - yq
+  - code
   - zsh
 
 - if:
