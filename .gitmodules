@@ -8,3 +8,6 @@
 [submodule "plugins/dotbot-apt"]
 	path = plugins/dotbot-apt
 	url = git@github.com:marcvorwerk/dotbot-apt.git
+[submodule "plugins/dotbot-if"]
+	path = plugins/dotbot-if
+	url = https://github.com/wonderbeyond/dotbot-if.git
