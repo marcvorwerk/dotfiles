@@ -11,3 +11,6 @@
 [submodule "plugins/dotbot-if"]
 	path = plugins/dotbot-if
 	url = https://github.com/wonderbeyond/dotbot-if.git
+[submodule "plugins/dotbot-sudo"]
+	path = plugins/dotbot-sudo
+	url = https://github.com/DrDynamic/dotbot-sudo.git
