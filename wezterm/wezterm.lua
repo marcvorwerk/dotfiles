@@ -63,6 +63,8 @@ config.show_new_tab_button_in_tab_bar = false
 config.window_decorations = "TITLE | RESIZE"
 
 config.keys = {
+	{ key = "UpArrow", mods = "SHIFT", action = act.ScrollByLine(-1) },
+	{ key = "DownArrow", mods = "SHIFT", action = act.ScrollByLine(1) },
 	{
 		key = "r",
 		mods = "CMD|SHIFT",
