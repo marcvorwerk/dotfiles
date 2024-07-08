@@ -65,6 +65,12 @@
         branch: master
         method: clone-or-pull
 
+- sudo:
+    - link:
+        /etc/apt/sources.list.d/:
+            glob: true
+            path: apt.sources.lists/*
+
 - apt:
   - bat
   - bind9-dnsutils
