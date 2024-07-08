@@ -66,10 +66,8 @@
         method: clone-or-pull
 
 - apt:
-  - awscli
   - bat
   - bind9-dnsutils
-  - darktable
   - eza
   - fd-find
   - fzf
@@ -79,14 +77,21 @@
   - ipcalc
   - iperf3
   - jq
-  - kubectl
   - neovim
   - nmap
-  - rpi-imager
   - tilix
   - wl-clipboard
   - yq
   - zsh
+
+- if:
+  - cond: 'test -f /etc/private.true'
+    met:
+    - apt:
+      - awscli
+      - darktable
+      - rpi-imager
+      - kubectl
 
 # ToDo:
 # - s3cfg and awscfg without secrets
