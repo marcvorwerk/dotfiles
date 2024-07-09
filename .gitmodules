@@ -14,3 +14,6 @@
 [submodule "plugins/dotbot-sudo"]
 	path = plugins/dotbot-sudo
 	url = https://github.com/DrDynamic/dotbot-sudo.git
+[submodule "plugins/dotbot-pip"]
+	path = plugins/dotbot-pip
+	url = https://github.com/sobolevn/dotbot-pip.git
