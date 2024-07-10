@@ -31,7 +31,9 @@ path+=(
 
 eval $(thefuck --alias)
 
-source <(kubectl completion zsh)
+if [ -f /etc/private.true ]; then
+    source <(kubectl completion zsh)
+fi
 
 # PYENV
 export PYENV_ROOT="$HOME/.pyenv"
