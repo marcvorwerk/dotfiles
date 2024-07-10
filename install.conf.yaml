@@ -67,6 +67,10 @@
         url: git@github.com:pyenv/pyenv-doctor.git
         branch: master
         method: clone-or-pull
+    ~/GIT/GITHUB/MY/fzf:
+        url: git@github.com:junegunn/fzf.git
+        branch: master
+        method: clone-or-pull
 
 #- pip:
 #    file: requirements.txt
@@ -94,6 +98,7 @@
   - ipcalc
   - iperf3
   - jq
+  - python3-pygments
   - neovim
   - nmap
   - tilix
