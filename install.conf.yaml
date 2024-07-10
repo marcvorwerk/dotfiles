@@ -3,6 +3,9 @@
       relink: true
       create: true
       force: false # maybe change to true?
+    shell:
+      quiet: true
+      stdout: true
 
 - clean: ['~']
 
@@ -65,6 +68,13 @@
         branch: master
         method: clone-or-pull
 
+#- pip:
+#    file: requirements.txt
+#    binary: /home/marc/.pyenv/shims/pip
+#    user: true    # Like --user
+#    stdout: false # Print the execution stdout
+#    stderr: true  # Print the execution stderr
+
 - sudo:
     - link:
         /etc/apt/sources.list.d/:
@@ -87,6 +97,7 @@
   - neovim
   - nmap
   - tilix
+  - thefuck
   - wl-clipboard
   - wezterm
   - yq
