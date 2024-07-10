@@ -100,7 +100,6 @@
   - thefuck
   - wl-clipboard
   - wezterm
-  - yq
   - code
   - zsh
 
@@ -112,6 +111,9 @@
       - darktable
       - rpi-imager
       - kubectl
+
+- brew:
+    - yq
 
 # ToDo:
 # - s3cfg and awscfg without secrets
