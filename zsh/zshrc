@@ -29,6 +29,20 @@ path+=(
     $HOME/go/bin
 )
 
+bindkey '^[[1;3C' forward-word
+bindkey '^[[1;3D' backward-word
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+bindkey '^[[5C' forward-word
+bindkey '^[[5D' backward-word
+bindkey '^[^[[C' forward-word
+bindkey '^[^[[D' backward-word
+
+# press ctrl + y to copy current line to buffer/clipboard
+cmd_to_clip () { wl-copy -n <<< $BUFFER }
+zle -N cmd_to_clip
+bindkey '^Y' cmd_to_clip
+
 eval $(thefuck --alias)
 
 if [ -f /etc/private.true ]; then

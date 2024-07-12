@@ -34,6 +34,7 @@
     # ~/.config/cheat/cheat.zsh:
     ~/.config/cheat/cheatsheets/personal/: cheats/
     ~/.profile: confs/profile
+    ~/.inputrc: confs/inputrc
     ~/.config/nvim/: nvim/
     ~/.config/nvim.vscode: vscode/nvim.vscode
     ~/.config/wezterm/: wezterm/

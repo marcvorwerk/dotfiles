@@ -1,0 +1,35 @@
+$include /etc/inputrc
+
+# Ignore case during tab-completion
+set completion-ignore-case on
+
+# Word movements with Ctrl and Alt keys
+"\e[1;5C": forward-word
+"\e[5C": forward-word
+"\e\e[C": forward-word
+"\e[1;5D": backward-word
+"\e[5D": backward-word
+"\e\e[D": backward-word
+
+# Enhanced history navigation
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# Improved completion settings
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set completion-query-items 100
+set mark-symlinked-directories on
+set visible-stats on
+set colored-stats on
+
+# Useful keybindings
+"\C-u": universal-argument
+"\C-w": backward-kill-word
+"\C-k": kill-line
+"\C-y": yank
+"\C-r": reverse-search-history
+"\C-s": forward-search-history
+
+# Enable mouse support
+set enable-bracketed-paste on
