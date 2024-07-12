@@ -70,7 +70,7 @@
     ~/GIT/GITHUB/MY/fzf:
         url: git@github.com:junegunn/fzf.git
         branch: master
-        method: clone-or-pull
+        method: clone
 
 #- pip:
 #    file: requirements.txt
@@ -90,7 +90,6 @@
   - bind9-dnsutils
   - eza
   - fd-find
-  - fzf
   - fonts-hack
   - git
   - git-extras
