@@ -101,11 +101,14 @@
   - python3-pygments
   - neovim
   - nmap
-  - tilix
   - thefuck
+  - tilix
+  - tldr
+  - tree
   - wl-clipboard
   - wezterm
   - code
+  - unrar
   - zsh
 
 - if:
