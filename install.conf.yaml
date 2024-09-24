@@ -100,6 +100,7 @@
   - jq
   - python3-pygments
   - neovim
+  - nnn
   - nmap
   - thefuck
   - tilix
