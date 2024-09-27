@@ -31,10 +31,10 @@
 
 function prompt_osenv() {
 
-	if [ -z "$OS_ENV" ]; then
+	if [ -z "$OS_CLOUD" ]; then
           p10k segment -f black -b white -t "->"
 	else
-	  p10k segment -f black -b white -t "$OS_ENV"
+	  p10k segment -f black -b white -t "$OS_CLOUD"
 	fi
 
 }
