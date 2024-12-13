@@ -123,7 +123,7 @@ compdef wat=which
 
 function better_mount() {
     if [ $# -eq 0 ]; then
-        mount | column -t
+        mount | column -t | egrep -v "/snap/"
     else
         command mount "$@"
     fi
