@@ -89,6 +89,7 @@
 - apt:
   - bat
   - bind9-dnsutils
+  - btop
   - eza
   - fd-find
   - fonts-hack
