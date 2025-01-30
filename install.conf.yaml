@@ -94,6 +94,7 @@
   - fonts-hack
   - git
   - git-extras
+  - git-review
   - htop
   - ipcalc
   - iperf3
