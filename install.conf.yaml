@@ -105,7 +105,6 @@
   - nnn
   - nmap
   - ripgrep
-  - thefuck
   - tilix
   - tldr
   - tree
@@ -125,7 +124,12 @@
       - kubectl
 
 - brew:
+    - opentofu
+    - minio-mc
+    - jless
     - yq
+    - gardener/tap/gardenctl-v2
+    - thefuck
 
 # ToDo:
 # - s3cfg and awscfg without secrets
