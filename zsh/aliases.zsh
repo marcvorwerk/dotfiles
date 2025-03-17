@@ -3,7 +3,7 @@
 ################
 
 # Colorize cat
-alias cat=ccat
+alias cat=batcat
 # Colorize less
 alias less=cless
 
