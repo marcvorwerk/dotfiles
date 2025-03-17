@@ -12,7 +12,7 @@ plugins=(
 	extract
 	git-auto-fetch
 	git-extras
-	thefuck 
+	#thefuck
 	zsh-syntax-highlighting
 )
 
@@ -43,7 +43,6 @@ cmd_to_clip () { wl-copy -n <<< $BUFFER }
 zle -N cmd_to_clip
 bindkey '^Y' cmd_to_clip
 
-eval $(thefuck --alias)
 
 if [ -f /etc/private.true ]; then
     source <(kubectl completion zsh)
@@ -66,3 +65,5 @@ source $HOME/.config/cheat/cheat.zsh
 
 setopt glob_dots # Do not require a leading ‘.’ in a filename to be matched explicitly.
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+eval $(thefuck --alias)
