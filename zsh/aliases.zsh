@@ -38,7 +38,7 @@ alias chgrp='chgrp --preserve-root'
 
 alias mkdir="mkdir -v "
 alias ll="ls --hyperlink=auto --color=auto -lahv"
-alias eza="eza -la --hyperlink"
+alias eza="eza-la --hyperlink"
 alias eza-tree="eza --tree --color=always --icons=always --git-ignore --no-quotes --hyperlink'"
 alias nn="nnn -e"
 alias bc="bc -l"
@@ -59,6 +59,7 @@ alias encrypt_remote="ssh -o UserKnownHostsFile=/dev/null -o PubkeyAcceptedAlgor
 # https://unix.stackexchange.com/questions/139231/keep-aliases-when-i-use-sudo-bash
 alias sudo='sudo '
 
+alias copy_file='xclip -sel c <'
 
 #################
 ### DEBUGGING ###
