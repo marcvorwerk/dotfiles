@@ -130,6 +130,28 @@
     - gardener/tap/gardenctl-v2
     - thefuck
 
+- shell:
+    - description: "Install or Upgrade OpenStack CLI if not already installed"
+      command: |
+        if ! command -v openstack_cli-update >/dev/null; then
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/gtema/openstack/releases/latest/download/openstack_cli-installer.sh | sh
+        else
+          echo "OpenStack CLI already installed."
+          echo "Upgrade ..."
+          openstack_cli-update
+        fi
+
+    - description: "Install or Upgrade OpenStack TUI if not already installed"
+      command: |
+        if ! command -v openstack_tui-update >/dev/null; then
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/gtema/openstack/releases/latest/download/openstack_tui-installer.sh | sh
+        else
+          echo "OpenStack TUI already installed."
+          echo "Upgrade ..."
+          openstack_tui-update
+        fi
+
+
 # ToDo:
 # - s3cfg and awscfg without secrets
 # - ~/.gitconfig
