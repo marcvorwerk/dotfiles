@@ -67,3 +67,5 @@ source $HOME/.config/cheat/cheat.zsh
 # fpath+=("${HOME}/.zsh_functions")
 
 eval $(thefuck --alias)
+
+. "$HOME/.cargo/env"
