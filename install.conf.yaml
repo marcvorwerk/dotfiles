@@ -118,7 +118,6 @@
   - cond: 'test -f /etc/private.true'
     met:
     - apt:
-      - awscli
       - darktable
       - rpi-imager
       - kubectl
