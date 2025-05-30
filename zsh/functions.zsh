@@ -164,6 +164,16 @@ git_fzf_diff() {
 }
 
 
+###########
+#### S3 ###
+###########
+
+s3env(){
+    local S3_ENV=$(find "$HOME/.config/s3cmd" -maxdepth 1 -type f -not -name '.*' -printf "%f\n" | fzf --prompt="Choose a ENV: ")
+    alias s3cmd="s3cmd --config=$HOME/.config/s3cmd/$S3_ENV"
+
+}
+
 #################
 ### OPENSTACK ###
 #################
