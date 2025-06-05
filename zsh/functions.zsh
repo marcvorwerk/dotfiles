@@ -178,11 +178,18 @@ s3env(){
 ### OPENSTACK ###
 #################
 
-echo -e "#!/bin/bash\nexport PATH=$PATH" > /tmp/restore_path
 osenv() {
-    osenvfiles="$HOME/.config/openstack/ENV"
-    export OS_ENV=$(find $osenvfiles \! -executable -type f -printf "%f\n" | sed 's/ /\n/g'| sort | fzf)
-    source $osenvfiles/$OS_ENV
+    local osenvfile="$HOME/.config/openstack/clouds.yaml"
+    if [ ! -f $osenvfile ]; then
+    echo "File not found!"
+    return 1
+    fi
+    local OS_ENV=$(yq eval -r '.clouds | keys | .[]' $osenvfile | fzf --prompt="Choose a Cloud: ")
+    if [[ -n "$OS_ENV" ]]; then
+        export OS_CLOUD="$OS_ENV"
+    else
+        echo "No Cloud selected"
+    fi
 }
 
 # Create Test Instance
