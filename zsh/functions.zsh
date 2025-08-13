@@ -192,23 +192,35 @@ osenv() {
     fi
 }
 
-# Create Test Instance
-openstack_create_test_instance() {
-    # Bash Style
-    # read -p "Enter Instance Name (Default: autoserver-$(date '+%d.%m.%Y_%H.%M')): " INSTANCE_NAME
-    # INSTANCE_NAME=${INSTANCE_NAME:-autotestserver_$(date '+%d.%m.%Y_%H.%M')}
-
-    # ZSH Style
-    local INSTANCE_NAME
+# Create OpenStack Test Instance
+openstack_create_test_instance () {
+    local INSTANCE_NAME IMAGE_ID FLAVOR_ID KEY_ID NETWORK_ID AZ_NAME
     vared -p "Enter Instance Name (Default [Enter]: autotestserver$(date '+%d.%m.%Y_%H.%M')): " -c INSTANCE_NAME
     : ${INSTANCE_NAME:=autotestserver$(date '+%d.%m.%Y_%H.%M')}
 
-    local MODIFY="grep -v -e '^+-' -e '^| ID' | sed 's/^| //' | sed 's/ \+|$'//"
+    local MODIFY="grep -v -e '^+-' -e '^| ID' | sed 's/^| //' | sed 's/ \+|$//'"
+
+    IMAGE_ID=$(openstack image list --status active -c ID -c Name | eval $MODIFY | \
+        fzf --prompt "Image: " --tac --no-sort | awk '{print $1}')
+
+    FLAVOR_ID=$(openstack flavor list -c ID -c Name | eval $MODIFY | \
+        fzf --prompt "Flavor: " --preview-window=up --tac --no-sort | awk '{print $1}')
+
+    KEY_ID=$(openstack keypair list | eval $MODIFY | grep -v "Fingerprint" | \
+        fzf --prompt "Key: " --tac --no-sort | awk '{print $1}')
+
+    NETWORK_ID=$(openstack network list --enable --internal -c ID -c Name | eval $MODIFY | \
+        fzf --prompt "Network: " --tac --no-sort | awk '{print $1}')
+
+    AZ_NAME=$(openstack availability zone list --compute | eval $MODIFY | \
+        sed 's/ \+| available$//' | grep -v "Zone Name | Zone Status" | \
+        fzf --prompt "AZ: " --tac --no-sort | awk '{print $1}')
+
     openstack server create \
-      --image $(openstack image list --status active -c ID -c Name | eval $MODIFY | fzf --prompt "Image: " --tac --no-sort --bind 'enter:execute(echo {1})+abort') \
-      --flavor $(openstack flavor list -c ID -c Name | eval $MODIFY | fzf --prompt "Flavor: " --preview-window=up --tac --no-sort --bind 'enter:execute(echo {1})+abort') \
-      --key-name $(openstack keypair list | eval $MODIFY | grep -v "Fingerprint" | fzf --prompt "Key: " --tac --no-sort --bind 'enter:execute(echo {1})+abort') \
-      --network $(openstack network list --enable --internal -c ID -c Name | eval $MODIFY | fzf --prompt "Network: " --tac --no-sort --bind 'enter:execute(echo {1})+abort') \
-      --availability-zone $(openstack availability zone list --compute | eval $MODIFY | sed 's/ \+| available$//' | grep -v "Zone Name | Zone Status" | fzf --prompt "AZ: " --tac --no-sort --bind 'enter:execute(echo {1})+abort') \
-      ${INSTANCE_NAME}
+        --image "$IMAGE_ID" \
+        --flavor "$FLAVOR_ID" \
+        --key-name "$KEY_ID" \
+        --network "$NETWORK_ID" \
+        --availability-zone "$AZ_NAME" \
+        "$INSTANCE_NAME"
 }
