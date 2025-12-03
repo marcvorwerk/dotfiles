@@ -3,13 +3,24 @@ local wezterm = require("wezterm")
 require("actions")
 require("open_file_with_vim")
 
-local config = {}
-
 local act = wezterm.action
-
+local config = {}
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
+
+config.enable_kitty_keyboard = true
+config.enable_csi_u_key_encoding = true
+
+-- Plugin laden und mit Defaults konfigurieren
+-- local modal = wezterm.plugin.require("https://github.com/MLFlexer/modal.wezterm")
+-- modal.use({}) -- aktiviert Standard-Modus und Defaults
+-- modal.apply_to_config(config)
+
+config.leader = { key = "Space", mods = "CTRL|SHIFT", timeout_milliseconds = 1000 }
+-- https://github.com/MLFlexer/.dotfiles/blob/main/home-manager/config/wezterm/keybinds.lua
+-- config.keys = require("keybinds")
+-- config.mouse_bindings = require("mousebinds")
 
 config.check_for_updates = false
 config.automatically_reload_config = true
@@ -86,6 +97,7 @@ config.keys = {
 		action = act.SpawnTab("CurrentPaneDomain"),
 	},
 }
+
 for i = 1, 9 do
 	table.insert(config.keys, {
 		key = tostring(i),

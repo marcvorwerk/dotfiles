@@ -20,3 +20,9 @@
 [submodule "plugins/dotbot-brew"]
 	path = plugins/dotbot-brew
 	url = https://github.com/wren/dotbot-brew.git
+[submodule "plugins/dotbot-rust"]
+	path = plugins/dotbot-rust
+	url = https://github.com/alexcormier/dotbot-rust
+[submodule "plugins/dotbot-golang"]
+	path = plugins/dotbot-golang
+	url = https://github.com/delicb/dotbot-golang
