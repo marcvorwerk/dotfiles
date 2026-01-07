@@ -26,3 +26,6 @@
 [submodule "plugins/dotbot-golang"]
 	path = plugins/dotbot-golang
 	url = https://github.com/delicb/dotbot-golang
+[submodule "plugins/dotbot-dnf"]
+	path = plugins/dotbot-dnf
+	url = https://github.com/rbrauner/dotbot-dnf.git
