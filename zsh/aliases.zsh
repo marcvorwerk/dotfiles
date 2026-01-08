@@ -3,7 +3,7 @@
 ################
 
 # Colorize cat
-alias cat=batcat
+alias cat=cat
 # Colorize less
 alias less=cless
 
@@ -32,13 +32,21 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
 
+#########
+# KITTY #
+#########
+
+# https://sw.kovidgoyal.net/kitty/kittens/icat/
+alias imgcat="kitten icat"
+
+
 ############
 ### MISC ###
 ############
 
 alias mkdir="mkdir -v "
 alias ll="ls --hyperlink=auto --color=auto -lahv"
-alias eza="eza-la --hyperlink"
+alias eza="eza --hyperlink"
 alias eza-tree="eza --tree --color=always --icons=always --git-ignore --no-quotes --hyperlink'"
 alias nn="nnn -e"
 alias bc="bc -l"

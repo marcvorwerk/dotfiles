@@ -16,4 +16,4 @@ export HISTCONTROL=ignoredups:ignorespac
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 
-export ANSIBLE_VAULT_PASSWORD_FILE=secret
+#export ANSIBLE_VAULT_PASSWORD_FILE=secret

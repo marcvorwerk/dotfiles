@@ -6,9 +6,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 DISABLE_MAGIC_FUNCTIONS=true
 
 plugins=(
-	colored-man-pages 
+	colored-man-pages
 	colorize 
-	command-not-found 
+	command-not-found
+  direnv
 	extract
 	git-auto-fetch
 	git-extras
@@ -69,3 +70,5 @@ source $HOME/.config/cheat/cheat.zsh
 eval $(thefuck --alias)
 
 . "$HOME/.cargo/env"
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#6272A4'
+
