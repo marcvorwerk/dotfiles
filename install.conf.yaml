@@ -13,11 +13,12 @@
   - [git submodule update --recursive --init, Installing submodules]
 
 - create:
+    - ~/.config/htop
     - ~/.config/cheat/cheatsheets
 
 - shell:
     - description: Install Cheat
-      command: scripts/install_cheat.sh --version 4.4.0
+      command: scripts/install_cheat.sh --version 4.4.2
       stdin: false
       stdout: true
       stderr: true
@@ -29,6 +30,7 @@
     ~/.functions.zsh: zsh/functions.zsh
     ~/.p10k.zsh: zsh/p10k.zsh
     ~/.fzf.zsh: autocompetions/fzf.zsh
+    ~/.config/htop/htoprc: confs/htoprc
     ~/.config/cheat/conf.yml: confs/cheat.yml
     ~/.config/cheat/cheat.zsh: autocompetions/cheat.zsh
     # ~/.config/cheat/cheat.zsh:
@@ -37,7 +39,10 @@
     ~/.inputrc: confs/inputrc
     ~/.config/nvim/: nvim/
     ~/.config/nvim.vscode: vscode/nvim.vscode
+    ~/.config/kitty/: kitty/
     ~/.config/wezterm/: wezterm/
+    ~/.config/stew/: stew/
+    ~/.gitconfig: git/gitconfig
 
 - git: 
     ~/.oh-my-zsh:
@@ -68,10 +73,10 @@
         url: git@github.com:pyenv/pyenv-doctor.git
         branch: master
         method: clone-or-pull
-    ~/GIT/GITHUB/MY/fzf:
-        url: git@github.com:junegunn/fzf.git
-        branch: master
-        method: clone
+#    ~/GIT/github.com/fzf:
+#        url: git@github.com:junegunn/fzf.git
+#        branch: master
+#        method: clone
 
 #- pip:
 #    file: requirements.txt
@@ -80,55 +85,113 @@
 #    stdout: false # Print the execution stdout
 #    stderr: true  # Print the execution stderr
 
-- sudo:
-    - link:
-        /etc/apt/sources.list.d/:
-            glob: true
-            path: apt.sources.lists/*
+- if:
+  - cond: 'grep -Eqi "(^ID=ubuntu|^ID=debian|ID_LIKE=.*debian)" /etc/os-release'
+    met:
 
-- apt:
-  - bat
-  - bind9-dnsutils
-  - btop
-  - eza
-  - fd-find
-  - fonts-hack
-  - git
-  - git-extras
-  - git-review
-  - htop
-  - ipcalc
-  - iperf3
-  - jq
-  - python3-pygments
-  - neovim
-  - nnn
-  - nmap
-  - ripgrep
-  - tilix
-  - tldr
-  - tree
-  - wl-clipboard
-  - wezterm
-  - code
-  - unrar
-  - zsh
+    - sudo:
+        - link:
+            /etc/apt/sources.list.d/:
+                glob: true
+                path: apt.sources.lists/*
+
+    - apt:
+      - bat
+      - bind9-dnsutils
+      - btop
+      - direnv
+      - eza
+      - fd-find
+      - fonts-hack
+      - git
+      - git-extras
+      - git-review
+      - htop
+      - ipcalc
+      - iperf3
+      - jq
+      - python3-pygments
+      - neovim
+      - nnn
+      - nmap
+      - ripgrep
+      - tilix
+      - tldr
+      - tree
+      - wl-clipboard
+      - wezterm
+      - wireguard
+      - code
+      - unrar
+      - zsh
 
 - if:
-  - cond: 'test -f /etc/private.true'
+  - cond: 'grep -Eqi "(^ID=fedora|ID_LIKE=.*fedora|ID_LIKE=.*rhel)" /etc/os-release'
     met:
-    - apt:
-      - darktable
-      - rpi-imager
-      - kubectl
+
+    - dnf:
+      - bat
+      - bind-utils
+      - btop
+      - direnv
+      - https://github.com/ferdium/ferdium-app/releases/download/v7.1.1/Ferdium-linux-7.1.1-x86_64.rpm
+      - fd
+      - firefox
+      - fzf
+      - source-foundry-hack-fonts.noarch
+      - git
+      - git-delta
+      - git-extras
+      - htop
+      - ipcalc
+      - iperf3
+      - jq
+      - kitty
+      - python3-neovim
+      - python3-pygments
+      - neovim
+      - nextcloud-client
+      - nextcloud-client-dolphin
+      - nnn
+      - nmap
+      - openrgb
+      - ripgrep
+      - thefuck
+      - thunderbird
+      - tldr
+      - tree
+      - wl-clipboard
+      - https://github.com/wezterm/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203_110809_5046fc22-1.fedora39.x86_64.rpm
+      - wireguard-tools
+      - zsh
+
+    - if:
+      - cond: 'test -f /etc/private.true'
+        met:
+        - dnf:
+          - darktable
+          - rpi-imager
+          - kubectl
 
 - brew:
+    - dnscontrol
+    - eza
+    - hugo
     - opentofu
     - minio-mc
     - jless
     - yq
     - gardener/tap/gardenctl-v2
     - thefuck
+
+
+# TODO: Update einbauen
+- shell:
+    - description: Install stew
+      command: |
+        if ! command -v stew >/dev/null 2>&1; then
+            ginstall github.com/marwanhawari/stew@latest
+        fi
 
 - shell:
     - description: "Install or Upgrade OpenStack CLI if not already installed"
@@ -151,7 +214,7 @@
           openstack_tui-update
         fi
 
-
+#
 # ToDo:
 # - s3cfg and awscfg without secrets
 # - ~/.gitconfig
