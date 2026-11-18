@@ -35,6 +35,7 @@
     ~/.config/cheat/cheat.zsh: autocompetions/cheat.zsh
     # ~/.config/cheat/cheat.zsh:
     ~/.config/cheat/cheatsheets/personal/: cheats/
+    ~/.config/zsh-patina/config.toml: zsh/zsh-patina.toml
     ~/.profile: confs/profile
     ~/.inputrc: confs/inputrc
     ~/.config/nvim/: nvim/
@@ -52,6 +53,10 @@
     ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting:
         url: git@github.com:zsh-users/zsh-syntax-highlighting.git
         branch: master
+        method: clone-or-pull
+    ~/.oh-my-zsh/custom/plugins/zsh-patina:
+        url: git@github.com:michel-kraemer/zsh-patina.git
+        branch: main
         method: clone-or-pull
     ~/.oh-my-zsh/custom/themes/powerlevel10k:
         url: git@github.com:romkatv/powerlevel10k.git
@@ -142,6 +147,7 @@
       - git
       - git-delta
       - git-extras
+      - golang
       - htop
       - ipcalc
       - iperf3
@@ -155,6 +161,7 @@
       - nnn
       - nmap
       - openrgb
+      - pwgen
       - ripgrep
       - thefuck
       - thunderbird
@@ -176,6 +183,7 @@
 - brew:
     - dnscontrol
     - eza
+    - glow
     - hugo
     - opentofu
     - minio-mc
@@ -183,6 +191,7 @@
     - yq
     - gardener/tap/gardenctl-v2
     - thefuck
+    - zsh-patina
 
 
 # TODO: Update einbauen

@@ -3,7 +3,7 @@
 ################
 
 # Colorize cat
-alias cat=cat
+alias cat=bat
 # Colorize less
 alias less=cless
 
@@ -57,6 +57,8 @@ alias history="history -E"
 alias path='echo -e ${PATH//:/\\n}'
 alias fpath='echo -e ${FPATH//:/\\n}'
 
+alias markdown='glow'
+
 # Remove Comments from File after Pipe
 alias no_comment="sed -e 's/\x1b\[[0-9;]*m//g' | grep -o '^[^;#]*' | cat"
 
@@ -67,7 +69,9 @@ alias encrypt_remote="ssh -o UserKnownHostsFile=/dev/null -o PubkeyAcceptedAlgor
 # https://unix.stackexchange.com/questions/139231/keep-aliases-when-i-use-sudo-bash
 alias sudo='sudo '
 
-alias copy_file='xclip -sel c <'
+alias copy_file='wl-copy <'
+
+alias grep='rg --hidden --smart-case --glob "!.git/*" --line-number --column'
 
 #################
 ### DEBUGGING ###

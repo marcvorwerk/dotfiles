@@ -1,0 +1,86 @@
+[includeIf "gitdir:/home/marc/GIT/"]
+    path = /home/marc/GIT/.private.gitconfig
+
+[pull]
+  ff = only
+
+[rebase]
+  autoStash = true
+
+[fetch]
+  prune = true
+  pruneTags = true
+
+[core]
+	pager = delta
+
+[merge]
+  conflictstyle = zdiff3
+
+[interactive]
+	diffFilter = delta --color-only --features=interactive
+
+[pager]
+  log = bat --paging=always --style=plain
+  reflog = bat --paging=always --style=plain
+
+[delta]
+  features = decorations
+	side-by-side = false
+  line-numbers = false
+  syntax-theme = GitHub
+  true-color = always
+
+[delta "interactive"]
+	keep-plus-minus-markers = false
+
+[delta "decorations"]
+	navigate = false
+	light = false
+	hunk-header-style = omit
+
+[gpg]
+  format = ssh
+
+[commit]
+  gpgsign = true
+
+[rerere]
+  enabled = true
+
+[column]
+  ui = auto
+  status = never
+
+[status]
+  short = false
+  showUntrackedFiles = all
+
+[branch]
+  sort = -committerdate
+  column = auto
+
+[tag]
+  gpgsign = true
+
+[credential "https://github.com"]
+	helper =
+  helper = !/usr/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+
+[alias]
+	diff-side-by-side = -c delta.line-numbers=true -c delta.side-by-side=true diff
+	diff-fz = !sh /home/marc/.local/bin/git-diff-fzf.sh
+	fn = !bash -c 'source /home/marc/.functions.zsh && git_fzf_diff'
+	diff-fz2 = "!zsh -c 'source /home/marc/.functions.zsh; git_fzf_diff'"
+	diffall = !sh diffall.sh
+	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
+	recent2 = !git branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\" | fzf
+  #delete-merged-branches = !git branch --merged | grep -Ev '(main|master)' | xargs --interactive --no-run-if-empty -n1 git branch --delete
+  delete-merged-branches = delete-merged-branches = !git for-each-ref --format='%(refname:short)' refs/heads --merged | grep -Ev '^(main|master)$' | xargs -r -n1 -p git branch -d
+  push-force-with-lease = push --force-with-lease
+  lg = log --graph --all --pretty=format:'%C(bold)%h%Creset -%C(auto)%d%Creset %s %C(green dim)(%cr)%Creset %C(ul)<%an>'
+	last = log -1 HEAD --stat

@@ -1,0 +1,16 @@
+[highlighting]
+
+# Syntax-Highlighting-Theme
+theme = "classic"
+
+# Dynamische Erkennung von Befehlen und Pfaden
+# Befehle werden auf Existenz geprüft
+# Pfade werden bei vollständiger Eingabe geprüft
+dynamic = { callables = true, paths = "complete" }
+
+# Maximale Länge einer Zeile für Highlighting
+max_line_length = 20000
+
+# Timeout für Highlighting in Millisekunden
+timeout_ms = 500
+
